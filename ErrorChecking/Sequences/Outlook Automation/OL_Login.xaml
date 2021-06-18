@@ -1,14 +1,10 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="OL_Login" this:OL_Login.in_site="outlook.com" this:OL_Login.in_email="jakob.watt@4s-llc.com" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_bool_SignIn" Type="InArgument(x:Boolean)" />
     <x:Property Name="in_int_globalTimeout" Type="InArgument(x:Int32)" />
     <x:Property Name="out_browser" Type="InArgument(ui:Browser)" />
     <x:Property Name="in_site" Type="InArgument(x:String)" />
     <x:Property Name="in_email" Type="InArgument(x:String)" />
   </x:Members>
-  <this:OL_Login.in_bool_SignIn>
-    <InArgument x:TypeArguments="x:Boolean" />
-  </this:OL_Login.in_bool_SignIn>
   <this:OL_Login.in_int_globalTimeout>
     <InArgument x:TypeArguments="x:Int32" />
   </this:OL_Login.in_int_globalTimeout>
@@ -18,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1104,2580</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1104,1216.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>OL_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -73,41 +69,40 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="OL_Login" sap:VirtualizedContainerService.HintSize="718.4,2415.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="OL_Login" sap:VirtualizedContainerService.HintSize="549.6,1052" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="bool_SignIn" />
+      <Variable x:TypeArguments="x:Boolean" Name="out_bool_pwdPage" />
+      <Variable x:TypeArguments="x:Boolean" Name="bool_SignedIn" />
+      <Variable x:TypeArguments="x:Boolean" Name="in_bool_simClick" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Open_Email_Proper" sap:VirtualizedContainerService.HintSize="676.8,2322.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:Boolean" Name="bool_SignedIn" />
-        <Variable x:TypeArguments="x:Boolean" Name="out_bool_pwdPage" />
-      </Sequence.Variables>
+    <Sequence DisplayName="Open_Email_Proper" sap:VirtualizedContainerService.HintSize="508,959.2" sap2010:WorkflowViewState.IdRef="Sequence_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Edge" DisplayName="Open Site" sap:VirtualizedContainerService.HintSize="635.2,2229.6" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_browser]" Url="[in_site]">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Edge" DisplayName="Open Site" sap:VirtualizedContainerService.HintSize="466.4,866.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_browser]" Url="[in_site]">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Outer Browser" sap:VirtualizedContainerService.HintSize="601.6,2127.2" sap2010:WorkflowViewState.IdRef="Sequence_4">
-              <Sequence.Variables>
-                <Variable x:TypeArguments="x:Boolean" Name="in_bool_simClick" />
-              </Sequence.Variables>
+            <Sequence DisplayName="Outer Browser" sap:VirtualizedContainerService.HintSize="375.2,764" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="560,22.4" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-              <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Sign in" sap:VirtualizedContainerService.HintSize="560,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="[in_bool_simClick]">
+              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+              <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Sign in" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="[in_bool_simClick]">
                 <ui:Click.CursorPosition>
                   <ui:CursorPosition Position="Center">
                     <ui:CursorPosition.OffsetX>
@@ -128,7 +123,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:Click>
-              <ui:UiElementExists DisplayName="Element Exists 'DIV  lightbox'" Exists="[in_bool_SignIn]" sap:VirtualizedContainerService.HintSize="560,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+              <ui:UiElementExists DisplayName="Sign In box Exists" Exists="[bool_SignIn]" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8618d2ba-4d97-4ed2-a4fa-9b1dfd52e27a" InformativeScreenshot="71d4aacd8f360e2795d75c399ea43665" Selector="&lt;html app='msedge.exe' title='Sign in to your Microsoft account' /&gt;&lt;webctrl id='lightbox' tag='DIV' class='sign-in-box ext-sign-in-box fade-in-lightbox has-popup' title='Sign in to your Microsoft account' /&gt;">
                     <ui:Target.TimeoutMS>
@@ -140,10 +135,10 @@
                   </ui:Target>
                 </ui:UiElementExists.Target>
               </ui:UiElementExists>
-              <If Condition="[in_bool_SignIn]" sap:VirtualizedContainerService.HintSize="560,592.8" sap2010:WorkflowViewState.IdRef="If_1">
+              <If Condition="[bool_SignIn]" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="If_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -205,7 +200,7 @@
                   </Sequence>
                 </If.Then>
               </If>
-              <ui:UiElementExists DisplayName="Password sign in exists" Exists="[out_bool_pwdPage]" sap:VirtualizedContainerService.HintSize="560,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+              <ui:UiElementExists DisplayName="Password sign in exists" Exists="[out_bool_pwdPage]" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                 <ui:UiElementExists.Target>
                   <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="427ef29d-f27a-47cf-9cba-2e4616664c1b" InformativeScreenshot="53086787d3c2c0f1d9f5275c1fd602b6" Selector="&lt;html app='msedge.exe' title='Sign in to your Microsoft account' /&gt;&lt;webctrl aria-role='heading' tag='DIV' aaname='Enter password' innertext='Enter password' /&gt;" TimeoutMS="[in_int_globalTimeout]">
                     <ui:Target.WaitForReady>
@@ -215,15 +210,15 @@
                 </ui:UiElementExists.Target>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:UiElementExists>
-              <If sap2010:Annotation.AnnotationText="This is rare, but the password needs to be pulled from somewhere instead of stored in pliantext" Condition="[out_bool_pwdPage]" DisplayName="If you need the password" sap:VirtualizedContainerService.HintSize="560,897.6" sap2010:WorkflowViewState.IdRef="If_3">
+              <If sap2010:Annotation.AnnotationText="This is rare, but the password needs to be pulled from somewhere instead of stored in pliantext" Condition="[out_bool_pwdPage]" DisplayName="If you need the password" sap:VirtualizedContainerService.HintSize="333.6,128.8" sap2010:WorkflowViewState.IdRef="If_3">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
