@@ -35,7 +35,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -63,6 +63,8 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.MobileAutomation</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="OL_MAIN" sap:VirtualizedContainerService.HintSize="420,545.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -130,6 +132,9 @@
         </InArgument>
         <InArgument x:TypeArguments="x:Boolean" x:Key="in_bool_simClick">
           <Literal x:TypeArguments="x:Boolean" Value="True" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_bool_send">
+          <Literal x:TypeArguments="x:Boolean" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
