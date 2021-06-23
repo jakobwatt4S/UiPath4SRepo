@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="JC_Login" this:JC_Login.in_jobCorpsSite="https://jobcorpsapps.com/" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="JC_Login" this:JC_Login.in_jobCorpsSite="https://jobcorpsapps.com/" this:JC_Login.in_timeoutTime="50000" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_jobCorpsSite" Type="InArgument(x:String)" />
     <x:Property Name="in_bool_click" Type="InArgument(x:Boolean)" />
@@ -10,10 +10,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1104,1692</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1104,1867.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>JC_Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="26">
+    <scg:List x:TypeArguments="x:String" Capacity="27">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -40,10 +40,11 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Security</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -70,11 +71,10 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="JC_Login" sap:VirtualizedContainerService.HintSize="600,1527.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="JC_Login" sap:VirtualizedContainerService.HintSize="600,1702.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:Browser" Name="brs_jobCorpsBrowser" />
       <Variable x:TypeArguments="x:Boolean" Name="bool_LoggedInPage" />
@@ -83,6 +83,7 @@
       <Variable x:TypeArguments="x:String" Default="jakob.watt@4s-llc.com" Name="in_jobCorpUsername" />
       <Variable x:TypeArguments="x:String" Name="out_JobCorpsDate" />
       <Variable x:TypeArguments="x:String" Name="str_currDate" />
+      <Variable x:TypeArguments="ss:SecureString" Name="in_jobCorpsPassword" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -90,13 +91,14 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="558.4,1434.4" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" UiBrowser="[brs_jobCorpsBrowser]" Url="[in_jobCorpsSite]">
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="JC_Credentials" DisplayName="Get Credential" FolderPath="Wyatt" sap:VirtualizedContainerService.HintSize="558.4,80.8" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[in_jobCorpsPassword]" Username="[in_jobCorpUsername]" />
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="558.4,1488.8" sap2010:WorkflowViewState.IdRef="OpenBrowser_2" UiBrowser="[brs_jobCorpsBrowser]" Url="[in_jobCorpsSite]">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="524.8,1332" sap2010:WorkflowViewState.IdRef="Sequence_19">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="524.8,1386.4" sap2010:WorkflowViewState.IdRef="Sequence_19">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -127,11 +129,7 @@
             </ui:GetActiveWindow>
             <ui:UiElementExists DisplayName="Find INIT Page" Exists="[bool_SignInPage]" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a739d66b-5cd7-4a5b-afa2-41cdc66ca607" InformativeScreenshot="be3151dcaad3ec938c4df9850a960b93" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div' isleaf='1' tag='DIV' aaname='*Sign in*' innertext='*Sign in*' title='Home page*Job Corps' /&gt;" TimeoutMS="[in_timeoutTime]">
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a739d66b-5cd7-4a5b-afa2-41cdc66ca607" InformativeScreenshot="be3151dcaad3ec938c4df9850a960b93" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div' isleaf='1' tag='DIV' aaname='*Sign in*' innertext='*Sign in*' title='Home page*Job Corps' /&gt;" TimeoutMS="[in_timeoutTime]" WaitForReady="INTERACTIVE" />
               </ui:UiElementExists.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -161,26 +159,18 @@
                     </ui:CursorPosition>
                   </ui:Click.CursorPosition>
                   <ui:Click.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="85514bff-32e1-4fb8-8eed-c19fb3578a82" InformativeScreenshot="0eaa8895669b716c27ecd48bbd7460bc" Selector="&lt;webctrl aaname='Sign in' css-selector='body&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;a' tag='A' /&gt;" TimeoutMS="[in_timeoutTime]">
-                      <ui:Target.WaitForReady>
-                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                      </ui:Target.WaitForReady>
-                    </ui:Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="85514bff-32e1-4fb8-8eed-c19fb3578a82" InformativeScreenshot="0eaa8895669b716c27ecd48bbd7460bc" Selector="&lt;webctrl aaname='Sign in' css-selector='body&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;a' tag='A' /&gt;" TimeoutMS="[in_timeoutTime]" WaitForReady="INTERACTIVE" />
                   </ui:Click.Target>
                 </ui:Click>
               </If.Then>
             </If>
-            <ui:UiElementExists DisplayName="Find Sign In Page" Exists="[bool_SignInPage2]" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+            <ui:UiElementExists DisplayName="Find Sign In Page" Exists="[bool_SignInPage2]" sap:VirtualizedContainerService.HintSize="483.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
               <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aa2f18d2-fc33-4e70-8abf-3a1d58f6bfc7" InformativeScreenshot="57e3d664c9cc475ac885c28996d79b94" Selector="&lt;webctrl tag='H2' /&gt;" TimeoutMS="[in_timeoutTime]">
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="aa2f18d2-fc33-4e70-8abf-3a1d58f6bfc7" InformativeScreenshot="57e3d664c9cc475ac885c28996d79b94" Selector="&lt;webctrl tag='H2' /&gt;" TimeoutMS="[in_timeoutTime]" WaitForReady="COMPLETE" />
               </ui:UiElementExists.Target>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -194,9 +184,6 @@
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
                 <Sequence sap:VirtualizedContainerService.HintSize="241.6,331.2" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Default="Restarted5787!" Name="in_jobCorpsPassword" />
-                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -217,21 +204,24 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:TypeInto>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Password" EmptyField="True" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="[in_bool_click]" Text="[in_jobCorpsPassword]">
-                    <ui:TypeInto.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b8a4cae4-3c52-492f-b529-21043f07b210" InformativeScreenshot="b5500e2261d3963990425fa09d8cb724" Selector="&lt;webctrl tag='INPUT' type='password' /&gt;" TimeoutMS="[in_timeoutTime]">
+                  <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Password" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[in_jobCorpsPassword]">
+                    <ui:TypeSecureText.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a861eff5-229b-459d-9e31-f8694b26ab7e" InformativeScreenshot="b5500e2261d3963990425fa09d8cb724" Selector="&lt;webctrl tag='INPUT' type='password' aria-label='Password' id='password' name='Password' parentclass='entry-item' title='Sign up or sign in' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
                       </ui:Target>
-                    </ui:TypeInto.Target>
+                    </ui:TypeSecureText.Target>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                  </ui:TypeInto>
+                  </ui:TypeSecureText>
                   <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Sign In" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="[in_bool_click]">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
@@ -262,16 +252,16 @@
             </If>
             <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="483.2,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="283.2,161.6" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="283.2,502.4" sap2010:WorkflowViewState.IdRef="Sequence_22">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <Sequence sap:VirtualizedContainerService.HintSize="241.6,409.6" sap2010:WorkflowViewState.IdRef="Sequence_21">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
